@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+main{
+  flex: 1 1 120px;
+  height: 100vh;
+  background-color: #eee;
+}
+
+.container-bg{
+  flex: 3;
+  height: 100vh;
+  background: linear-gradient(180deg, #222831 49.48%, #393E46 100%);
+}
+
+.container-login{
+  border: 1px solid red;
+}

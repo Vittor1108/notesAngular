@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+$colorContrast: #00adb5;
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Roboto, 'sans-serif';
+}
+
+.titleLogin{
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  &::after{
+    content: '';
+    width: 180px;
+    background-color: $colorContrast;
+    height: 2px;
+    display: block;
+    margin: 0 auto;
+  }
+
+}
