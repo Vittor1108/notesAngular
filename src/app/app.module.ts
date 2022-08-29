@@ -11,6 +11,7 @@ import { NewUserComponent } from './pages/login/new-user/new-user.component';
 import { SignComponent } from './pages/login/sign/sign.component';
 import { NameInputComponent } from './components/form/name-input/name-input.component';
 import { EmailInputComponent } from './components/form/email-input/email-input.component';
+import { PasswordInputComponent } from './components/form/password-input/password-input.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { EmailInputComponent } from './components/form/email-input/email-input.c
     SignComponent,
     NameInputComponent,
     EmailInputComponent,
+    PasswordInputComponent,
   ],
   imports: [
     BrowserModule,

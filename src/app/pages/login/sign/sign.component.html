@@ -1,2 +1,13 @@
-<h1 class="titleLogin">Login</h1>
-<app-email-input></app-email-input>
+<div class="container">
+  <h1 class="titleLogin">Login</h1>
+  <form action="">
+    <app-name-input></app-name-input>
+    <app-password-input></app-password-input>
+    <div class="titleLogin"></div>
+    <button type="submit" class="primary-button">Entrar</button>
+  </form>
+  <a routerLink="/login/lost-password" class="primary-link"
+    >Esqueceu a senha?</a
+  >
+  <a routerLink="/login/new-user" class="secondary-link">Realizar cadastro</a>
+</div>

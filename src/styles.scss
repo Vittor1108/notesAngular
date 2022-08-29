@@ -1,23 +1,71 @@
 $colorContrast: #00adb5;
-
-*{
+$font-color: #393e46;
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Roboto, 'sans-serif';
+  font-family: Roboto, "sans-serif";
 }
 
-.titleLogin{
+.titleLogin {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  &::after{
-    content: '';
+  &::after {
+    content: "";
     width: 180px;
     background-color: $colorContrast;
     height: 2px;
     display: block;
     margin: 0 auto;
   }
+}
 
+.label-form {
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  font-weight: lighter;
+  color: #393e46;
+}
+
+.input-form {
+  display: block;
+  width: 100%;
+  border: 1px solid #222831;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.primary-link {
+  color: $colorContrast;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  &::after {
+    content: "";
+    display: block;
+    width: 0%;
+    max-width: 100px;
+    margin: 2px auto;
+    height: 2px;
+    background-color: $colorContrast;
+    transition: all .3s ease-out;
+  }
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+.secondary-link {
+  color: $font-color;
+  text-decoration: none;
+  display: block;
+  text-align: center;
 }

@@ -1,3 +1,5 @@
+$colorContrast: #00adb5;
+
 .container {
   display: flex;
   justify-content: center;
@@ -6,18 +8,19 @@
   height: 100vh;
 }
 
-main{
+main {
   flex: 1 1 120px;
   height: 100vh;
   background-color: #eee;
+
+  .login-img {
+    margin: 100px auto;
+    text-align: center;
+  }
 }
 
-.container-bg{
+.container-bg {
   flex: 3;
   height: 100vh;
-  background: linear-gradient(180deg, #222831 49.48%, #393E46 100%);
-}
-
-.container-login{
-  border: 1px solid red;
+  background: linear-gradient(180deg, #222831 49.48%, #393e46 100%);
 }
