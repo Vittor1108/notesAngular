@@ -7,6 +7,10 @@ $font-color: #393e46;
   font-family: Roboto, "sans-serif";
 }
 
+html, body{
+  overflow: hidden;
+}
+
 .titleLogin {
   font-size: 3rem;
   font-weight: bold;
@@ -68,4 +72,38 @@ $font-color: #393e46;
   text-decoration: none;
   display: block;
   text-align: center;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0%;
+    max-width: 100px;
+    margin: 2px auto;
+    height: 2px;
+    background-color: $font-color;
+    transition: all .3s ease-out;
+  }
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+
+// Animations
+
+.animationLeft{
+  animation: animationLeft .5s;
+}
+
+@keyframes animationLeft {
+  from{
+    opacity: 0;
+    transform: translateX(-60px);
+  }to{
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

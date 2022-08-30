@@ -12,6 +12,7 @@ import { SignComponent } from './pages/login/sign/sign.component';
 import { NameInputComponent } from './components/form/name-input/name-input.component';
 import { EmailInputComponent } from './components/form/email-input/email-input.component';
 import { PasswordInputComponent } from './components/form/password-input/password-input.component';
+import { ConfirmPasswordComponent } from './components/form/confirm-password/confirm-password.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { PasswordInputComponent } from './components/form/password-input/passwor
     NameInputComponent,
     EmailInputComponent,
     PasswordInputComponent,
+    ConfirmPasswordComponent,
   ],
   imports: [
     BrowserModule,
