@@ -1,8 +1,14 @@
 <div class="container animationLeft">
   <h1 class="titleLogin">Login</h1>
   <form action="">
-    <app-name-input></app-name-input>
-    <app-password-input></app-password-input>
+    <label for="name" class="label-form">Nome:</label>
+    <input type="text" name="name" id="name" class="input-form" >
+    <label for="password" class="label-form">Senha:</label>
+    <input type="password" class="input-form" name="password">
+    <div class="iconsLogin">
+      <p (click)="signWithSocialMedia('facebook')"><img src="../../../../assets/img/facebookLogo.png" alt="Login Facebook"></p>
+      <p (click)="signWithSocialMedia('google')"><img src="../../../../assets/img/googleLogo.png" alt="Login Google"></p>
+    </div>
     <div class="titleLogin"></div>
     <button type="submit" class="primary-button">Entrar</button>
   </form>

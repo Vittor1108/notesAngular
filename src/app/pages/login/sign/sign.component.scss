@@ -26,3 +26,32 @@ $colorContrastHover: #04c6cf;
 .titleLogin{
   margin: 30px auto;
 }
+
+.iconsLogin{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p{
+    width: 47%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    transition:all .3s;
+    &:hover{
+      opacity: .8;
+    }
+    cursor: pointer;
+    img{
+      width: 25px;
+      max-width: 25px;
+    }
+  }
+
+  p:first-child{
+    background-color: #1877F2;
+    border: 1px solid #1877F2;
+  }
+}

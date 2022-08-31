@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,10 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LostPasswordComponent } from './pages/login/lost-password/lost-password.component';
 import { NewUserComponent } from './pages/login/new-user/new-user.component';
 import { SignComponent } from './pages/login/sign/sign.component';
-import { NameInputComponent } from './components/form/name-input/name-input.component';
-import { EmailInputComponent } from './components/form/email-input/email-input.component';
-import { PasswordInputComponent } from './components/form/password-input/password-input.component';
-import { ConfirmPasswordComponent } from './components/form/confirm-password/confirm-password.component';
+
 
 
 @NgModule({
@@ -24,14 +22,11 @@ import { ConfirmPasswordComponent } from './components/form/confirm-password/con
     LostPasswordComponent,
     NewUserComponent,
     SignComponent,
-    NameInputComponent,
-    EmailInputComponent,
-    PasswordInputComponent,
-    ConfirmPasswordComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

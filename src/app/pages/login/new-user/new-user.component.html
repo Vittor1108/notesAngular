@@ -1,11 +1,92 @@
 <div class="container animationLeft">
   <h1 class="titleLogin">Cadastre-se</h1>
-  <form action="">
-    <app-name-input></app-name-input>
-    <app-email-input></app-email-input>
-    <app-confirm-password></app-confirm-password>
+  <form [formGroup]="form">
+    <label for="name" class="label-form">Nome:</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      class="input-form"
+      formControlName="name"
+    />
+    <p
+      class="error-form"
+      *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched"
+    >
+      Nome obrigatório
+    </p>
+    <p
+      class="error-form"
+      *ngIf="form.get('name')?.errors?.['short'] && form.get('name')?.dirty"
+    >
+      Nome precisa ter no minímo 3 caracteres
+    </p>
+
+    <label for="email" class="label-form">Email:</label>
+    <input type="email" class="input-form" formControlName="email" />
+
+    <p
+      class="error-form"
+      *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched"
+    >
+      Email é obrigatório
+    </p>
+    <p
+      class="error-form"
+      *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.dirty"
+    >
+      Email inválido
+    </p>
+
+    <label for="password" class="label-form">Senha:</label>
+    <input
+      type="password"
+      class="input-form"
+      name="password"
+      formControlName="password"
+    />
+
+    <p
+      class="error-form"
+      *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched "
+    >
+      Senha é obrigatório
+    </p>
+
+    <p
+      class="error-form"
+      *ngIf="form.get('password')?.errors?.['minlength'] && form.get('password')?.dirty"
+    >
+     A senha deve conter pelo menos 5 caracteres
+    </p>
+
+    <label for="confirmPassword" class="label-form">Confirmar senha:</label>
+    <input
+      type="password"
+      class="input-form"
+      name="confirmPassword"
+      formControlName="confirmPassword"
+    />
+
+    <p
+      class="error-form"
+      *ngIf="form.get('confirmPassword')?.errors?.['required'] && form.get('confirmPassword')?.touched"
+    >
+      Confirmar a senha é obrigatório
+    </p>
+
+    <p
+    class="error-form"
+    *ngIf="form.get('confirmPassword')?.errors?.['validatePassword'] && form.get('password')?.dirty"
+  >
+   As senhas não conicidem
+  </p>
+
     <div class="titleLogin"></div>
-    <button type="submit" class="primary-button">Confirmar Cadastro</button>
+
+    <button [disabled]="!form.valid" type="submit" class="primary-button">
+      Confirmar Cadastro
+    </button>
   </form>
   <a routerLink="/login/sign" class="secondary-link">Voltar ao Login</a>
 </div>

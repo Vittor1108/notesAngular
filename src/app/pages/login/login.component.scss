@@ -51,13 +51,15 @@ main {
     .noteBlue {
       left: 40%;
       top: 10%;
+      animation: scale .5s;
       &:hover{
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
     }
     .noteYellow {
       top: 40vh;
       left: 65%;
+      animation: rotate .8s;
       &:hover{
         transform: rotate(360deg);
       }
@@ -65,12 +67,16 @@ main {
     .noteRed {
       top: 65vh;
       left: 40%;
+      animation:  translateX 1s;
+      animation-direction: alternate;
       &:hover{
         transform: translate(20px, 40px);
       }
     }
     .notePurple {
       top: 10%;
+      animation: border 1s;
+      animation-direction: alternate;
       &:hover{
        border-radius: 50%;
       }
@@ -82,5 +88,38 @@ main {
         transform: translate(-20px, -40px);
       }
     }
+  }
+}
+
+
+@keyframes scale {
+  from{
+    transform: scale(0);
+  }to{
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rotate {
+  from{
+    transform: rotate(0);
+  }to{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes translateX {
+  from{
+    transform: translate(0);
+  }to{
+    transform: translate(20px, 40px);
+  }
+}
+
+@keyframes border {
+  from{
+    border-radius: 0;
+  }to{
+    border-radius: 50%;
   }
 }
