@@ -47,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/Vittor1108/notesAngular/issues"
   },
-  "homepage": "https://github.com/Vittor1108/notesAngular#readme"
+  "homepage": "https://github.com/Vittor1108/notesAngular#readme",
+  "keywords": [
+    "cls"
+  ]
 }

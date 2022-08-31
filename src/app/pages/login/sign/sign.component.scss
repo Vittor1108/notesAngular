@@ -21,6 +21,12 @@ $colorContrastHover: #04c6cf;
   &:hover{
     background-color: $colorContrastHover;
   }
+
+  &:disabled{
+    background-color: #ccc;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: no-drop;
+  }
 }
 
 .titleLogin{

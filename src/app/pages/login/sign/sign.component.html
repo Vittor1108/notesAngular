@@ -1,17 +1,32 @@
 <div class="container animationLeft">
   <h1 class="titleLogin">Login</h1>
-  <form action="">
+  <form [formGroup]="form" (ngSubmit)="handleSubmit()">
     <label for="name" class="label-form">Nome:</label>
-    <input type="text" name="name" id="name" class="input-form" >
+    <input type="text" name="name" id="name" class="input-form" formControlName="name"/>
+
+    <p class="error-form" *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched">
+      Preencha o nome
+    </p>
+
     <label for="password" class="label-form">Senha:</label>
-    <input type="password" class="input-form" name="password">
+    <input type="password" class="input-form" name="password" formControlName="password">
+
+    <p class="error-form" *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched">
+      Preencha uma senha
+    </p>
+
+
     <div class="iconsLogin">
       <p (click)="signWithSocialMedia('facebook')"><img src="../../../../assets/img/facebookLogo.png" alt="Login Facebook"></p>
       <p (click)="signWithSocialMedia('google')"><img src="../../../../assets/img/googleLogo.png" alt="Login Google"></p>
     </div>
+
     <div class="titleLogin"></div>
-    <button type="submit" class="primary-button">Entrar</button>
+
+    <button type="submit" class="primary-button" [disabled]="!form.valid">Entrar</button>
+
   </form>
+
   <a routerLink="/login/lost-password" class="primary-link"
     >Esqueceu a senha?</a
   >

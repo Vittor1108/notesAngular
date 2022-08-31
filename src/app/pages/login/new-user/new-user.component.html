@@ -1,6 +1,6 @@
 <div class="container animationLeft">
   <h1 class="titleLogin">Cadastre-se</h1>
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="handleSubmit()">
     <label for="name" class="label-form">Nome:</label>
     <input
       type="text"
@@ -57,7 +57,7 @@
       class="error-form"
       *ngIf="form.get('password')?.errors?.['minlength'] && form.get('password')?.dirty"
     >
-     A senha deve conter pelo menos 5 caracteres
+     A senha deve conter pelo menos 7 caracteres
     </p>
 
     <label for="confirmPassword" class="label-form">Confirmar senha:</label>
