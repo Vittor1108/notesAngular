@@ -1,20 +1,27 @@
 <div class="container animationLeft">
   <h1 class="titleLogin">Login</h1>
   <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-    <label for="name" class="label-form">Nome:</label>
-    <input type="text" name="name" id="name" class="input-form" formControlName="name"/>
+    <label for="name" class="label-form">Email:</label>
+    <input type="text" name="name" id="name" class="input-form" formControlName="name" (keyup)="removeError('email')"/>
 
     <p class="error-form" *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched">
-      Preencha o nome
+      Preencha um email
+    </p>
+
+    <p class="error-form" *ngIf="errorEmail">
+      Email inválido
     </p>
 
     <label for="password" class="label-form">Senha:</label>
-    <input type="password" class="input-form" name="password" formControlName="password">
+    <input type="password" class="input-form" name="password" formControlName="password" (keyup)="removeError('password')"/>
 
     <p class="error-form" *ngIf="form.get('password')?.errors?.['required'] && form.get('password')?.touched">
       Preencha uma senha
     </p>
 
+    <p class="error-form" *ngIf="errorPassword">
+      Senha inválida
+    </p>
 
     <div class="iconsLogin">
       <p (click)="signWithSocialMedia('facebook')"><img src="../../../../assets/img/facebookLogo.png" alt="Login Facebook"></p>
