@@ -7,6 +7,7 @@ import {
   FacebookAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 
 import { Router } from '@angular/router';
@@ -18,7 +19,7 @@ export class SignService {
     Firebase;
   }
 
-  errorMessage:string = '';
+  errorMessage: string = '';
 
   signSocialMedia(social: string) {
     const auth = getAuth();
@@ -71,10 +72,14 @@ export class SignService {
 
   async sign(dataUser: { name: string; password: string }) {
     const auth = getAuth();
-    const request = await signInWithEmailAndPassword(auth, dataUser.name, dataUser.password)
+    const request = await signInWithEmailAndPassword(
+      auth,
+      dataUser.name,
+      dataUser.password
+    )
       .then((userCredential) => {
         const user = userCredential.user;
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
         return true;
       })
       .catch((error) => {
@@ -83,7 +88,31 @@ export class SignService {
         return errorCode;
       });
 
-      return request;
+    return request;
   }
 
+  async resetPasswrod(email: string) {
+    const auth = getAuth();
+    const validation = await sendPasswordResetEmail(auth, email)
+      .then(() => {
+        this.router.navigate(['/login/sign']);
+        return true;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        return errorCode;
+      });
+    return validation;
+  }
+
+  signOut(){
+    getAuth().signOut()
+    .then(()=> {
+      this.router.navigate(['/login/sign']);
+    })
+    .catch(error => {
+      console.log("Deu ruim");
+    })
+  }
 }

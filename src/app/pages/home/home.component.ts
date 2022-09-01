@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SignService } from 'src/app/service/sign/sign.service';
+import { Auth } from 'firebase/auth';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sign: SignService) { }
 
   ngOnInit(): void {
+  }
+
+  signOut(){
+    this.sign.signOut();
   }
 
 }

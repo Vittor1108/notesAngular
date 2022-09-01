@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import { SignService } from 'src/app/service/sign/sign.service';
 @Component({
   selector: 'app-lost-password',
   templateUrl: './lost-password.component.html',
@@ -7,21 +8,22 @@ import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 })
 export class LostPasswordComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private signService: SignService) {
 
    }
 
   form!: FormGroup;
-
-
+  errorRequest: boolean = false;
+  
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     });
   }
 
-  handleSubmit(){
-    console.log(this.form.value);
+  async handleSubmit(){
+    const request  = await this.signService.resetPasswrod(this.form.value.email);
+    request !== true ? this.errorRequest = true : this.errorRequest = false;
   }
 
 
