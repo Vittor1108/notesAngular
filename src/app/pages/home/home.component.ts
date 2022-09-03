@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   signOut(){
     this.sign.signOut();
+    localStorage.removeItem('logado');
   }
 
 }

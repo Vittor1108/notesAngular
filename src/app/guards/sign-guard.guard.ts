@@ -15,7 +15,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 export class SignGuard implements CanActivate {
   constructor(private router: Router) {}
 
-  isLogado: boolean = false;
+  isLogado: any = false;
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -26,6 +26,8 @@ export class SignGuard implements CanActivate {
     | boolean
     | UrlTree {
     this.userConnect();
+    // if(!this.isLogado) this.router.navigate(['/login/sign']);
+    if(localStorage.getItem('logado') !==  null) this.isLogado = true;
     return this.isLogado;
   }
 
@@ -34,6 +36,7 @@ export class SignGuard implements CanActivate {
     onAuthStateChanged(auth, (user): void => {
       if (user) {
         const uid = user.uid;
+        localStorage.setItem('logado', uid);
         this.isLogado = true;
       } else {
         this.isLogado = false;
