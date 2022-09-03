@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignService } from 'src/app/service/sign/sign.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { provideProtractorTestingSupport } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign',
@@ -11,7 +11,8 @@ import { provideProtractorTestingSupport } from '@angular/platform-browser';
 export class SignComponent implements OnInit {
   constructor(
     private signService: SignService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   form!: FormGroup;
@@ -38,17 +39,18 @@ export class SignComponent implements OnInit {
       } else if (requestLogin === 'auth/wrong-password') {
         this.errorPassword = true;
       }
+    } else {
+      this.router.navigate(['']);
     }
   }
 
+  removeError(campo: string): void {
+    if (campo === 'email') {
+      this.errorEmail = false;
+    }
 
-  removeError(campo:string):void{
-   if(campo === 'email'){
-    this.errorEmail = false;
-   }
-
-   if(campo === 'password'){
-    this.errorPassword = false;
-   }
+    if (campo === 'password') {
+      this.errorPassword = false;
+    }
   }
 }

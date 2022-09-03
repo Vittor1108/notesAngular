@@ -13,8 +13,8 @@ export class LostPasswordComponent implements OnInit {
    }
 
   form!: FormGroup;
-  errorRequest: boolean = false;
-  
+  errorRequest: any = null;
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]

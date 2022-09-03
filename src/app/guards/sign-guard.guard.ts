@@ -13,32 +13,31 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
   providedIn: 'root',
 })
 export class SignGuard implements CanActivate {
-  constructor(private router: Router) {
-    this.userConnect();
-  }
+  constructor(private router: Router) {}
 
-  acessRoute: boolean = false;
+  isLogado: boolean = false;
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.acessRoute){
-        this.router.navigate(['']);
-      }else{
-        this.router.navigate(['/login/sign']);
-      }
-    return this.acessRoute;
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    this.userConnect();
+    return this.isLogado;
   }
+
   userConnect() {
     const auth = getAuth();
-    const logado = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user): void => {
       if (user) {
         const uid = user.uid;
-        this.acessRoute = true;
-        console.log("Usuário está logado");
+        this.isLogado = true;
       } else {
-        console.log('Usuário não está logado');
-        this.acessRoute = false;
+        this.isLogado = false;
+        this.router.navigate(['/login/sign']);
       }
     });
   }

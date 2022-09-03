@@ -95,7 +95,6 @@ export class SignService {
     const auth = getAuth();
     const validation = await sendPasswordResetEmail(auth, email)
       .then(() => {
-        this.router.navigate(['/login/sign']);
         return true;
       })
       .catch((error) => {
