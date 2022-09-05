@@ -1,2 +1,29 @@
-<h1>Home</h1>
-<button (click)="signOut()">Deslogar</button>
+<div class="container">
+  <section class="side-menu">
+    <nav>
+      <div class="top-icons">
+        <div class="icon-profile">
+          <img src="../../../assets/img/iconProfile.png" alt="Imagem de perfil do usuário">
+          <span class="divisor"></span>
+        </div>
+        <ul>
+          <li style="margin-top: 0;" class="activeMenuLi"><a href=""><img src="../../../assets/img/home.png" alt="Home"></a></li>
+          <li><a href="#"><img src="../../../assets/img/editIcon.png" alt="Editar"></a></li>
+          <li><a href="#"><img src="../../../assets/img/iconeDocumento.png" alt="Documentos"></a></li>
+          <li><a href="#"><img src="../../../assets/img/setting.png" alt="Configurações"></a></li>
+        </ul>
+      </div>
+      <div class="bottom-icons">
+        <ul>
+          <li style="margin-bottom: 40px"><a href="#"><img src="../../../assets/img/changeTheme.png" alt="Trocar Tema"></a></li>
+          <li (click)="signOut()"><a href="#"><img src="../../../assets/img/logout.png" alt="Sair"></a></li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section class="content-section">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </section>
+</div>

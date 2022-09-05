@@ -10,6 +10,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { LostPasswordComponent } from './pages/login/lost-password/lost-password.component';
 import { NewUserComponent } from './pages/login/new-user/new-user.component';
 import { SignComponent } from './pages/login/sign/sign.component';
+import { HomeCardsComponent } from './pages/home/home-cards/home-cards.component';
+import { DocumentsCardComponent } from './pages/home/documents-card/documents-card.component';
 
 
 
@@ -22,6 +24,8 @@ import { SignComponent } from './pages/login/sign/sign.component';
     LostPasswordComponent,
     NewUserComponent,
     SignComponent,
+    HomeCardsComponent,
+    DocumentsCardComponent,
   ],
   imports: [
     BrowserModule,

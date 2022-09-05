@@ -11,6 +11,10 @@ html, body{
   overflow: hidden;
 }
 
+ul, ol{
+  list-style-type:none;
+}
+
 .titleLogin {
   font-size: 3rem;
   font-weight: bold;
@@ -98,6 +102,12 @@ html, body{
   }
 }
 
+
+.activeMenuLi{
+  background-color: #393E46;
+  border-radius: 30px;
+  padding-top: 5px;
+}
 
 // Animations
 
