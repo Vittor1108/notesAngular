@@ -30,7 +30,7 @@ $colorContrast: #00adb5;
       0px 64px 64px -32px rgba(102, 37, 0, 0.56);
     backdrop-filter: blur(160px);
     padding: 30px 22px;
-    transition:  all .3s;
+    transition: all 0.3s;
     transform: translate(30px);
     > div {
       height: 50%;
@@ -59,10 +59,10 @@ $colorContrast: #00adb5;
 
         li {
           margin-top: 40px;
-          transition: all .3s;
+          transition: all 0.3s;
 
-          &:hover{
-            background-color: #393E46;
+          &:hover {
+            background-color: #393e46;
             border-radius: 30px;
             padding-top: 5px;
           }
@@ -75,30 +75,35 @@ $colorContrast: #00adb5;
       align-items: center;
       justify-content: flex-end;
 
-      li{
-       width: 60px;
-       text-align: center;
-        transition: all .3s;
-       &:hover{
-        background-color: #393E46;
-        border-radius: 30px;
-        padding: 5px;
-       }
+      li {
+        width: 60px;
+        text-align: center;
+        transition: all 0.3s;
+        &:hover {
+          background-color: #393e46;
+          border-radius: 30px;
+          padding: 5px;
+        }
       }
     }
   }
 }
 
 .content-section {
-  height: 100vh;
+  height: 80vh;
   width: calc(100% - 170px);
   margin-left: 170px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border: 1px solid red;
+
+  .bg {
+    width: 100vw;
+    height: 250px;
+    position: fixed;
+    background-image: url("../../../assets/img/bgMain.jpg");
+  }
 }
 
-main{
+main {
   width: 100%;
 }
