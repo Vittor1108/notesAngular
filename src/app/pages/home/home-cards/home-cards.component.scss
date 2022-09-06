@@ -7,12 +7,18 @@ $secondaryColorsCard: #393e46;
   flex-wrap: wrap;
   margin-top: 150px;
   position: absolute;
+  padding-bottom: 20px;
+  @media (max-width: 1367px) {
+    margin-top: 10px;
+  }
+
 }
 
 .container-cards-top,
 .container-cards-bottom {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   padding: 0 20px;
 }
 
@@ -23,6 +29,13 @@ $secondaryColorsCard: #393e46;
     border-radius: 30px;
     margin-right: 30px;
     padding: 40px 0 0 40px;
+
+    @media (max-width: 1367px) {
+      width: 90%;
+      flex: 0 1 auto;
+      max-width: 1220px;
+      margin: 0 auto 30px auto;
+    }
   }
 
   .card-top-hours {
@@ -47,7 +60,7 @@ $secondaryColorsCard: #393e46;
         font-size: 20px;
         text-align: center;
         margin-bottom: 5px;
-        width: 100%;
+        width: 90%;
       }
 
       > p {
@@ -63,7 +76,7 @@ $secondaryColorsCard: #393e46;
         font-size: 64px;
         font-weight: lighter;
         color: white;
-        width: 100%;
+        width: 90%;
         margin-top: 10px;
       }
 
@@ -92,6 +105,29 @@ $secondaryColorsCard: #393e46;
         }
       }
     }
+
+    @media (max-width: 1367px) {
+      flex: 0 1 auto;
+      max-width: 1220px;
+      margin: 0 auto 30px auto;
+      width: 90%;
+
+    }
+
+    @media (max-width: 768px){
+      flex-wrap: wrap;
+
+      .hours-hours-app{
+        width: 100%;
+      }
+
+      .hours-weather-app{
+        width: 100% !important;
+        border-bottom: 1px solid $detailsColor;
+        border-right: none !important;
+        padding-bottom: 10px;
+      }
+    }
   }
 
   .hours-hours-app {
@@ -116,8 +152,15 @@ $secondaryColorsCard: #393e46;
     padding: 40px 40px 5px 40px;
     flex: 1;
     margin-right: 20px;
+    @media (max-width: 1367px) {
+      flex: 0 1 auto;
+      max-width: 1220px;
+      margin: 30px auto 0px auto;
+      width: 90%;
+      order: 2;
+    }
 
-    .citation{
+    .citation {
       text-align: center;
       font-size: 20px;
       font-style: italic;
@@ -125,7 +168,7 @@ $secondaryColorsCard: #393e46;
       font-weight: lighter;
     }
 
-    .author{
+    .author {
       margin-top: 35px;
       font-size: 20px;
       font-style: italic;
@@ -139,6 +182,13 @@ $secondaryColorsCard: #393e46;
     padding: 40px 0 0 40px;
     background-color: $cardsBackground;
     border-radius: 30px;
+    @media (max-width: 1367px) {
+      flex: 0 1 auto;
+      max-width: 1220px;
+      margin: 30px auto 0px auto;
+      width: 90%;
+      order: 1;
+    }
   }
 }
 

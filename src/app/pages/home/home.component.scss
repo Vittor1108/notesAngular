@@ -7,7 +7,7 @@ $colorContrast: #00adb5;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  
 }
 
 // MENU
@@ -37,6 +37,10 @@ $colorContrast: #00adb5;
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
+    }
+
+    .toogle-mobile{
+      display: none;
     }
 
     .top-icons {
@@ -86,6 +90,26 @@ $colorContrast: #00adb5;
         }
       }
     }
+
+    @media (max-width: 767px) {
+      transform: translateX(-90%);
+      transition:  all .5s;
+      .toogle-mobile{
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        position: absolute;
+        right: -15px;
+        bottom: 60px;
+        padding: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+    }
   }
 }
 
@@ -97,10 +121,21 @@ $colorContrast: #00adb5;
   justify-content: center;
 
   .bg {
-    width: 100vw;
+    width: calc(100% - 30px);
     height: 250px;
     position: fixed;
     background-image: url("../../../assets/img/bgMain.jpg");
+    background-position: center;
+    background-size: cover;
+    @media (max-width: 768px){
+      // display: none;
+      right: 0;
+    }
+  }
+
+  @media (max-width: 768px){
+    width: 100%;
+    margin: 0 auto;
   }
 }
 
