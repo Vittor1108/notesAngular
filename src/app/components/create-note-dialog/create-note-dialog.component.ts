@@ -34,8 +34,6 @@ export class CreateNoteDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
-
   handleSubmit():void{
     this.configSnackbar();
     this.createNewNote(this.form.value);
@@ -46,6 +44,7 @@ export class CreateNoteDialogComponent implements OnInit {
   createNewNote(valueForm: {nameTask:string, descriptionNote: string}){
     const userEmail = getAuth().currentUser?.email;
     this.serviceNote.saveInfoNotes(valueForm, userEmail!);
+    this.serviceNote.teste();
   }
 
   configSnackbar(){

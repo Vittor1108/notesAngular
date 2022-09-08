@@ -24,7 +24,7 @@ $secondaryColorsCard: #393e46;
   display: flex;
   flex-wrap: wrap;
   margin-top: 150px;
-  position: absolute;
+  // position: absolute;
   padding-bottom: 20px;
   @media (max-width: 1367px) {
     margin-top: 10px;
@@ -35,11 +35,11 @@ $secondaryColorsCard: #393e46;
 .container-cards-bottom {
   width: 100%;
   display: flex;
-  // flex-wrap: wrap;
+  z-index: 3;
   padding: 0 20px;
-  @media (max-width: 1367px) {
+  // @media (max-width: 1367px) {
     flex-wrap: wrap;
-  }
+  // }
 }
 
 .container-cards-top {

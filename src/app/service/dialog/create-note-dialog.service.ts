@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firebase } from '../firebase/firebase-config.service';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 @Injectable({
@@ -26,14 +26,19 @@ export class CreateNoteDialogService {
       const docRef = await addDoc(collection(this.db, "notes"), {
         nameTask: infoNotes.nameTask,
         descriptionNote: infoNotes.descriptionNote,
-        date: `${day}/${month}/${year}`
+        date: `${day}/${month}/${year}`,
+        email: userEmail
       });
-      console.log("Document written with ID: ", docRef.id);
+
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   }
 
-
-
+  async teste(){
+    const query = await getDocs(collection(this.db, 'notes'));
+    query.forEach((doc)=>{
+      console.log(doc.data());
+    })
+  }
 }

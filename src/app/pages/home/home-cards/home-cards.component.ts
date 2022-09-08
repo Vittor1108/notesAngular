@@ -19,9 +19,6 @@ export class HomeCardsComponent implements OnInit {
       width: '30%',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    
   }
-
 }
