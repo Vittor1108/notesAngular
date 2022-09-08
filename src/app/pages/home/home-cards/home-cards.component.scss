@@ -9,11 +9,11 @@ $secondaryColorsCard: #393e46;
 }
 ::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
+  height: 4px;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background: white;
+  background: #ddd;
   border-radius: 5px;
   &:hover {
     background-color: #00adb5;
@@ -305,4 +305,10 @@ $secondaryColorsCard: #393e46;
     margin-left: 5px;
     color: $detailsColor;
   }
+}
+
+// DIALOG CUSTOM
+::ng-deep.mat-dialog-container {
+  background-color: $secondaryColorsCard;
+  width: 50%;
 }

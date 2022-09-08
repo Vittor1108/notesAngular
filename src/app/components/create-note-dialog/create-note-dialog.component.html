@@ -1,4 +1,54 @@
-<h1>Olá Vittor</h1>
-<p>teste</p>
-<button (click)="closeModal()">Fechar</button>
-<button>OK</button>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <div class="containerTitleNote">
+      <label for="nameTask">Titulo da Nota</label>
+      <input
+        type="text"
+        name="nameTask"
+        id="nameTask"
+        placeholder="Insira o titula da nota"
+        formControlName="nameTask"
+      />
+      <p
+        class="error-form"
+        *ngIf="form.get('nameTask')?.errors?.['required'] && form.get('nameTask')?.touched"
+      >
+        Preencha o titulo da nota
+      </p>
+      <p
+      class="error-form"
+      *ngIf="form.get('nameTask')?.errors?.['minlength'] && form.get('nameTask')?.dirty"
+    >
+      Titulo da nota precisa ter no minímo 3 caracteres
+    </p>
+    </div>
+    <div class="containerDescriptionNote">
+      <textarea
+        name="descriptionNote"
+        id="descriptionNote"
+        cols="30"
+        rows="10"
+        placeholder="Adicione detalhes a sua Nota"
+        formControlName="descriptionNote"
+      ></textarea>
+      <p
+        class="error-form"
+        *ngIf="form.get('descriptionNote')?.errors?.['required'] && form.get('descriptionNote')?.touched"
+      >
+        Preencha uma descrição
+      </p>
+      <p
+      class="error-form"
+      *ngIf="form.get('descriptionNote')?.errors?.['minlength'] && form.get('descriptionNote')?.dirty"
+    >
+      Uma descrição válida precisa de ao menos 5 caracteres
+    </p>
+    </div>
+    <div class="buttons">
+      <p class="close" (click)="closeModal()">Fechar</p>
+      <button class="save" type="submit" [disabled]="!form.valid">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>

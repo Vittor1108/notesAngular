@@ -1,0 +1,86 @@
+$detailsColor: #00ADB5;
+$blackColor: #1a1a1a;
+
+.containerTitleNote{
+  margin-bottom: 10px;
+
+  label{
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+  }
+
+  input{
+    padding: 5px 0 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    &:focus{
+      outline: 2px solid $detailsColor;
+    }
+  }
+
+  .error-form{
+    margin: 7px 0px 0px 0px !important;
+    color: #ff5151;
+  }
+}
+
+.containerDescriptionNote{
+  textarea{
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 0px 0px 10px;
+    &:focus{
+      border: none;
+      outline: 2px solid $detailsColor;
+    }
+  }
+  .error-form{
+    margin: 7px 0px 0px 0px !important;
+    color: #ff5151;
+  }
+}
+
+
+.buttons{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  p, button{
+    width: 120px;
+    padding:7px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 5px;
+    transition: all .3s;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .close{
+    background-color: $blackColor;
+    color: white;
+    &:hover{
+      background-color: $detailsColor;
+      color: $blackColor;
+    }
+  }
+
+  .save{
+    background-color: $detailsColor;
+    border: none;
+    outline: none;
+    &:hover{
+      background-color: $blackColor;
+      color: white;
+    }
+    &:disabled{
+      cursor: no-drop;
+      background-color: #ccc;
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+}

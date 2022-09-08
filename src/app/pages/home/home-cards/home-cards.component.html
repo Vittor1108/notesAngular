@@ -3,14 +3,6 @@
     <article class="card-top-notes">
       <h1 class="title-cards">Notes</h1>
       <div class="container-notes">
-        <article class="notes-info" (click)="openDialog()">
-          <h4>Titulo da nota</h4>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever si
-          </p>
-        </article>
         <article class="notes-info">
           <h4>Titulo da nota</h4>
           <p>
@@ -27,7 +19,15 @@
             ever si
           </p>
         </article>
-        <div class="add-notes">
+        <article class="notes-info">
+          <h4>Titulo da nota</h4>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever si
+          </p>
+        </article>
+        <div class="add-notes" (click)="createNewNotes()">
           <span>+</span>
         </div>
       </div>

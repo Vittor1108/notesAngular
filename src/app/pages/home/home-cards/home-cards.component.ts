@@ -14,9 +14,9 @@ export class HomeCardsComponent implements OnInit {
 
   }
 
-  openDialog(): void {
+  createNewNotes(): void {
     const dialogRef = this.dialog.open(CreateNoteDialogComponent, {
-      width: '250px',
+      width: '30%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
