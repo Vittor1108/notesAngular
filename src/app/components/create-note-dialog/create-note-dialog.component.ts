@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import { getAuth } from 'firebase/auth';
 
 // SERVICE
 import { CreateNoteDialogService } from 'src/app/service/dialog/create-note-dialog.service';
@@ -26,7 +27,7 @@ export class CreateNoteDialogComponent implements OnInit {
     this.form = this.formBuilder.group({
       nameTask: ['', [Validators.required, Validators.minLength(3)]],
       descriptionNote: ['', [Validators.required, Validators.minLength(5)]]
-    })
+    });
   }
 
   closeModal(): void {
@@ -43,7 +44,8 @@ export class CreateNoteDialogComponent implements OnInit {
   }
 
   createNewNote(valueForm: {nameTask:string, descriptionNote: string}){
-    this.serviceNote.saveInfoNotes(valueForm);
+    const userEmail = getAuth().currentUser?.email;
+    this.serviceNote.saveInfoNotes(valueForm, userEmail!);
   }
 
   configSnackbar(){

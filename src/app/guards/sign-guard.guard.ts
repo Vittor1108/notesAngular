@@ -38,6 +38,7 @@ export class SignGuard implements CanActivate {
         const uid = user.uid;
         localStorage.setItem('logado', uid);
         this.isLogado = true;
+        // console.log(user);
       } else {
         this.isLogado = false;
         this.router.navigate(['/login/sign']);
