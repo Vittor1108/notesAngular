@@ -3,30 +3,21 @@
     <article class="card-top-notes">
       <h1 class="title-cards">Notes</h1>
       <div class="container-notes">
-        <article class="notes-info">
+        <!-- <article class="notes-info">
           <h4>Titulo da nota</h4>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever si
           </p>
-        </article>
-        <article class="notes-info">
-          <h4>Titulo da nota</h4>
+        </article>-->
+        <article class="notes-info" *ngFor="let note of allNotes">
+          <h4>{{note.nameTask}}</h4>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever si
+           {{note.descriptionNote}}
           </p>
         </article>
-        <article class="notes-info">
-          <h4>Titulo da nota</h4>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever si
-          </p>
-        </article>
+        <article class="container-notes"></article>
         <div class="add-notes" (click)="createNewNotes()">
           <span>+</span>
         </div>

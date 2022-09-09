@@ -4,6 +4,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import { getAuth } from 'firebase/auth';
 
+// INTERFACE
+import InterfaceNotes from 'src/app/interface/Notes';
+
+
 // SERVICE
 import { CreateNoteDialogService } from 'src/app/service/dialog/create-note-dialog.service';
 
@@ -35,28 +39,36 @@ export class CreateNoteDialogComponent implements OnInit {
   }
 
   handleSubmit():void{
-    this.configSnackbar();
     this.createNewNote(this.form.value);
 
     this.dialogRef.close();
   }
 
-  createNewNote(valueForm: {nameTask:string, descriptionNote: string}){
+  async createNewNote(valueForm: {nameTask:string, descriptionNote: string}){
     const userEmail = getAuth().currentUser?.email;
-    this.serviceNote.saveInfoNotes(valueForm, userEmail!);
-    this.serviceNote.teste();
+    const saveInfoNotes =  await this.serviceNote.saveInfoNotes(valueForm, userEmail!);
+    const snackBar = await this.configSnackbar(await this.serviceNote.addNotes);
   }
 
-  configSnackbar(){
+  async configSnackbar(noteCreate: boolean){
     const horizontalPosition: MatSnackBarHorizontalPosition = 'right';
     const verticalPosition: MatSnackBarVerticalPosition = 'top';
-    this.snackBar.open("Nota Adiconada!!", "", {
-      horizontalPosition: horizontalPosition,
-      verticalPosition: verticalPosition,
-      panelClass: ['notes-add'],
-      duration: 1.5 * 1000
-    });
 
+    if(noteCreate){
+      this.snackBar.open("Nota Adiconada!!", "", {
+        horizontalPosition: horizontalPosition,
+        verticalPosition: verticalPosition,
+        panelClass: ['notes-add'],
+        duration: 1.5 * 1000
+      });
+    }else{
+      this.snackBar.open("Não foi possível adiconar sua note, tente novamente", "", {
+        horizontalPosition: horizontalPosition,
+        verticalPosition: verticalPosition,
+        panelClass: ['notes-notAdd'],
+        duration: 1.5 * 1000
+      });
+    }
   }
 
 }
