@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { CreateNoteDialogComponent } from 'src/app/components/create-note-dialog/create-note-dialog.component';
 import { CreateNoteDialogService } from 'src/app/service/dialog/create-note-dialog.service';
-import InterfaceNotes from 'src/app/interface/Notes';
-import { Observable } from 'rxjs';
+import { ReadNoteDialogComponent } from 'src/app/components/read-note-dialog/read-note-dialog.component';
 
 @Component({
   selector: 'app-home-cards',
@@ -23,15 +22,32 @@ export class HomeCardsComponent implements OnInit {
     this.getNotes();
   }
 
-  createNewNotes(): void {
+  public createNewNotes(): void {
     const dialogRef = this.dialog.open(CreateNoteDialogComponent, {
       width: '30%',
+      data: { getNotes: this.getNotes },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getNotes();
     });
   }
 
-  getNotes(): void {
-    this.createNote.addLastNote().then(element => {
-      const teste = element.subscribe((teste: any) => this.allNotes = teste);
+  public async getNotes() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user): any => {
+      if (user) {
+        const userEmail = user.email!;
+        this.createNote.addLastNote(userEmail).then((element) => {
+          element.subscribe((allNotes: any) => (this.allNotes = allNotes));
+        });
+      }
+    });
+  }
+
+  public readNotes(nameTask: string, userEmail: string): void {
+    const dialogRef = this.dialog.open(ReadNoteDialogComponent, {
+      width: '30%',
     });
   }
 }

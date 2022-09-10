@@ -38,8 +38,8 @@ export class CreateNoteDialogService {
     }
   }
 
-  async addLastNote(): Promise<any>{
-    const q = query(collection(this.db, "notes"));
+  async addLastNote(userEmail: string): Promise<any>{
+    const q = query(collection(this.db, "notes"), where('email', '==', userEmail));
     const querySnapShot = await getDocs(q);
     let allTasks:any = [];
     querySnapShot.forEach((element => {

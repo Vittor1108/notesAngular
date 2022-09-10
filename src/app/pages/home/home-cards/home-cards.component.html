@@ -11,7 +11,7 @@
             ever si
           </p>
         </article>-->
-        <article class="notes-info" *ngFor="let note of allNotes">
+        <article class="notes-info" *ngFor="let note of allNotes" (click)="readNotes(note.nameTask, note.email)">
           <h4>{{note.nameTask}}</h4>
           <p>
            {{note.descriptionNote}}

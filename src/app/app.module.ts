@@ -17,6 +17,7 @@ import { HomeCardsComponent } from './pages/home/home-cards/home-cards.component
 import { DocumentsCardComponent } from './pages/home/documents-card/documents-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateNoteDialogComponent } from './components/create-note-dialog/create-note-dialog.component';
+import { ReadNoteDialogComponent } from './components/read-note-dialog/read-note-dialog.component';
 
 
 
@@ -32,6 +33,7 @@ import { CreateNoteDialogComponent } from './components/create-note-dialog/creat
     HomeCardsComponent,
     DocumentsCardComponent,
     CreateNoteDialogComponent,
+    ReadNoteDialogComponent,
   ],
   imports: [
     BrowserModule,
