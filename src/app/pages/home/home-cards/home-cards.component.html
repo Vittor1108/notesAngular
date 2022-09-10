@@ -3,14 +3,6 @@
     <article class="card-top-notes">
       <h1 class="title-cards">Notes</h1>
       <div class="container-notes">
-        <!-- <article class="notes-info">
-          <h4>Titulo da nota</h4>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever si
-          </p>
-        </article>-->
         <article class="notes-info" *ngFor="let note of allNotes" (click)="readNotes(note.nameTask, note.email, note.id, note.descriptionNote, note.date)">
           <h4>{{note.nameTask}}</h4>
           <p>
@@ -63,11 +55,19 @@
   <section class="container-cards-bottom">
     <article class="card-bottom-advices">
       <p class="citation">
-       `{{phraseEmotional}}`
+       ` {{phraseEmotional}} `
       </p>
     </article>
     <article class="card-bottom-tasks">
       <h1 class="title-cards">Tarefas</h1>
+      <form [formGroup]="form" (ngSubmit)="handleSubmitTask()">
+        <input type="text" placeholder="Adiciona uma tarefa" id="addTask" name="addTask" formControlName="addTask">
+        <button type="submit" [disabled]="!form.valid">Criar Tarefa</button>
+      </form>
+      <ul *ngIf="allTasks.length > 0">
+        <!-- <p *ngFor="let task of allTasks">{{task.nameTask}}</p> -->
+        <li *ngFor="let task of allTasks"> <input type="checkbox" (click)="deleteTask(task.idTask)">{{task.nameTask}}</li>
+      </ul>
     </article>
   </section>
 </div>

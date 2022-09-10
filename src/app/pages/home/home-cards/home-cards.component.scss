@@ -255,6 +255,7 @@ $secondaryColorsCard: #393e46;
     padding: 40px 40px 5px 40px;
     flex: 1;
     margin-right: 20px;
+    align-self: center;
     @media (max-width: 1367px) {
       flex: 0 1 auto;
       max-width: 1220px;
@@ -264,27 +265,22 @@ $secondaryColorsCard: #393e46;
     }
 
     .citation {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 20px;
       font-style: italic;
       color: white;
       font-weight: lighter;
       padding-bottom: 10px;
       transition: all .5s;
-    }
-
-    .author {
-      margin-top: 35px;
-      font-size: 20px;
-      font-style: italic;
-      color: white;
-      font-weight: lighter;
+      text-align: center;
     }
   }
 
   .card-bottom-tasks {
     flex: 2;
-    padding: 40px 0 0 40px;
+    padding: 40px 15px 15px 40px;
     background-color: $cardsBackground;
     border-radius: 30px;
     @media (max-width: 1367px) {
@@ -293,6 +289,57 @@ $secondaryColorsCard: #393e46;
       margin: 30px auto 0px auto;
       width: 90%;
       order: 1;
+    }
+
+    input[type="text"]{
+      margin: 10px auto;
+      width: 85%;
+      margin-right: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 7px 5px;
+      border: none;
+      outline: none;
+      &:focus{
+        border: none;
+        outline: 2px solid $detailsColor;
+      }
+    }
+
+    button{
+      padding: 7px;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: $detailsColor;
+      border-color: $detailsColor;
+      outline: none;
+      color: $cardsBackground;
+      transition: all .3s;
+      &:hover{
+        background-color: $cardsBackground;
+        color: white;
+        border-color: $cardsBackground;
+        outline: none;
+      }
+      &:disabled{
+        background-color: #ccc;
+        border-color: #ccc;
+        color: rgba(0, 0, 0, 0.4);
+        cursor: no-drop;
+      }
+    }
+
+    ul{
+      overflow-y: scroll;
+      max-height: 150px;
+      li{
+        color: white;
+        margin-bottom: 20px;
+
+        >input{
+          margin-right: 5px;
+        }
+      }
     }
   }
 }
@@ -315,6 +362,6 @@ $secondaryColorsCard: #393e46;
   width: 50%;
 }
 
-.teste{
-  opacity: 0;
+.error-form{
+  margin: -15px 0 20px 0;
 }

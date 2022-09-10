@@ -1,15 +1,17 @@
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { CreateNoteDialogComponent } from 'src/app/components/create-note-dialog/create-note-dialog.component';
 import { CreateNoteDialogService } from 'src/app/service/dialog/create-note-dialog.service';
 import { ReadNoteDialogComponent } from 'src/app/components/read-note-dialog/read-note-dialog.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { EmotionalPhraseService } from 'src/app/service/emotionalPharse/emotional-phrase.service';
+import { CreateNewTaskService } from 'src/app/service/createNewTask/create-new-task.service';
 @Component({
   selector: 'app-home-cards',
   templateUrl: './home-cards.component.html',
@@ -17,21 +19,33 @@ import { EmotionalPhraseService } from 'src/app/service/emotionalPharse/emotiona
 })
 export class HomeCardsComponent implements OnInit {
   allNotes: Array<any> = [];
+  allTasks: Array<any>  = [];
   phraseEmotional!: string;
+  form!: FormGroup;
+  email!:string;
+  @ViewChild('taskValue') input: any;
 
   constructor(
     public dialog: MatDialog,
     private createNote: CreateNoteDialogService,
     private snackBar: MatSnackBar,
-    private pharseService: EmotionalPhraseService
+    private pharseService: EmotionalPhraseService,
+    public formBuilder: FormBuilder,
+    private taskService: CreateNewTaskService
   ) {}
 
   ngOnInit(): void {
     this.getNotes();
+    this.getTasks()
     setInterval(() => {
       this.getPharse();
     }, 60000);
+
     this.getPharse();
+
+    this.form = this.formBuilder.group({
+      addTask: ['', [Validators.required]],
+    })
   }
 
   public createNewNotes(): void {
@@ -50,6 +64,7 @@ export class HomeCardsComponent implements OnInit {
     onAuthStateChanged(auth, (user): any => {
       if (user) {
         const userEmail = user.email!;
+        this.email = userEmail;
         this.createNote.addLastNote(userEmail).then((element) => {
           element.subscribe((allNotes: any) => (this.allNotes = allNotes));
         });
@@ -99,5 +114,30 @@ export class HomeCardsComponent implements OnInit {
     this.pharseService.getPharse().subscribe((pharse) => {
       this.phraseEmotional = pharse.slip.advice;
     });
+  }
+
+  public handleSubmitTask():void{
+    this.taskService.createTask(this.form.value.addTask, this.email);
+    this.taskService.addLastTask(this.email).then((element) => {
+      element.subscribe((allTasks: any) => (this.allTasks = allTasks));
+    });
+  }
+
+  private getTasks():void{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user): any => {
+      if (user) {
+        const userEmail = user.email!;
+        this.taskService.addLastTask(userEmail).then((element) => {
+          element.subscribe((allTasks: any) => (this.allTasks = allTasks));
+        });
+      }
+    });
+  }
+
+  public deleteTask(id:number):void {
+    const idToString = `${id}`;
+    this.taskService.deleteTask(idToString);
+    this.getTasks();
   }
 }
