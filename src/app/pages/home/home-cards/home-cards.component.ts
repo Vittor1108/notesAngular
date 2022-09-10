@@ -1,10 +1,15 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { CreateNoteDialogComponent } from 'src/app/components/create-note-dialog/create-note-dialog.component';
 import { CreateNoteDialogService } from 'src/app/service/dialog/create-note-dialog.service';
 import { ReadNoteDialogComponent } from 'src/app/components/read-note-dialog/read-note-dialog.component';
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { EmotionalPhraseService } from 'src/app/service/emotionalPharse/emotional-phrase.service';
 @Component({
   selector: 'app-home-cards',
   templateUrl: './home-cards.component.html',
@@ -12,15 +17,21 @@ import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition}
 })
 export class HomeCardsComponent implements OnInit {
   allNotes: Array<any> = [];
+  phraseEmotional!: string;
 
   constructor(
     public dialog: MatDialog,
     private createNote: CreateNoteDialogService,
     private snackBar: MatSnackBar,
+    private pharseService: EmotionalPhraseService
   ) {}
 
   ngOnInit(): void {
     this.getNotes();
+    setInterval(() => {
+      this.getPharse();
+    }, 60000);
+    this.getPharse();
   }
 
   public createNewNotes(): void {
@@ -46,35 +57,47 @@ export class HomeCardsComponent implements OnInit {
     });
   }
 
-  public readNotes(nameTask: string, userEmail: string, id:number, descriptionTask: string, date: string): void {
+  public readNotes(
+    nameTask: string,
+    userEmail: string,
+    id: number,
+    descriptionTask: string,
+    date: string
+  ): void {
     const dialogRef = this.dialog.open(ReadNoteDialogComponent, {
       width: '40%',
-      data: {nameTask, userEmail, id, descriptionTask, date}
+      data: { nameTask, userEmail, id, descriptionTask, date },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.configSnackBar(result);
       this.getNotes();
-    })
+    });
   }
 
-  private configSnackBar(text: string): void{
+  private configSnackBar(text: string): void {
     const horizontalPosition: MatSnackBarHorizontalPosition = 'right';
     const verticalPosition: MatSnackBarVerticalPosition = 'top';
-    if(text === 'edit'){
-      this.snackBar.open("Nota Editada!!", "", {
+    if (text === 'edit') {
+      this.snackBar.open('Nota Editada!!', '', {
         horizontalPosition: horizontalPosition,
         verticalPosition: verticalPosition,
         panelClass: ['notes-add'],
-        duration: 1.5 * 1000
+        duration: 1.5 * 1000,
       });
-    }else if (text === 'exclude'){
-      this.snackBar.open("Nota excluida com sucesso!", "", {
+    } else if (text === 'exclude') {
+      this.snackBar.open('Nota excluida com sucesso!', '', {
         horizontalPosition: horizontalPosition,
         verticalPosition: verticalPosition,
         panelClass: ['notes-add'],
-        duration: 1.5 * 1000
+        duration: 1.5 * 1000,
       });
     }
+  }
+
+  public getPharse(): void {
+    this.pharseService.getPharse().subscribe((pharse) => {
+      this.phraseEmotional = pharse.slip.advice;
+    });
   }
 }

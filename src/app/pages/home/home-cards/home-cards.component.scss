@@ -269,6 +269,8 @@ $secondaryColorsCard: #393e46;
       font-style: italic;
       color: white;
       font-weight: lighter;
+      padding-bottom: 10px;
+      transition: all .5s;
     }
 
     .author {
@@ -311,4 +313,8 @@ $secondaryColorsCard: #393e46;
 ::ng-deep.mat-dialog-container {
   background-color: $secondaryColorsCard;
   width: 50%;
+}
+
+.teste{
+  opacity: 0;
 }
