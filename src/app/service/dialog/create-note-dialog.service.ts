@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firebase } from '../firebase/firebase-config.service';
-import { getFirestore, collection, addDoc, getDocs, query, where, limitToLast, doc, getDocFromCache, getDoc, orderBy, increment } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { Observable, of } from 'rxjs';
+import { getFirestore, collection, addDoc, getDocs, query, where, setDoc, doc} from 'firebase/firestore';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,13 +23,14 @@ export class CreateNoteDialogService {
     const day = date.getDate() <= 9 ? `0${date.getDate()}` : date.getDate();
     const month = date.getMonth() + 1 <= 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
     const year = date.getFullYear();
+    const id = Math.floor(Math.random() * 99999);
     try {
-      const docRef = await addDoc(collection(this.db, "notes"), {
+      const docRef = await setDoc(doc(this.db, "notes", `${id}`), {
         nameTask: infoNotes.nameTask,
         descriptionNote: infoNotes.descriptionNote,
         date: `${day}/${month}/${year}`,
         email: userEmail,
-
+        id
       });
       this.addNotes = true;
     } catch (e) {

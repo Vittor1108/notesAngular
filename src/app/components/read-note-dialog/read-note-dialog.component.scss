@@ -1,0 +1,92 @@
+$colorContrast:#00adb5;
+h2{
+  color: $colorContrast;
+  width: 100%;
+}
+
+.container{
+  .container-infos{
+    margin: 10px auto;
+    width: 100%;
+    label{
+      display: block;
+      width: 100%;
+      color: white;
+      font-weight: lighter;
+      margin-bottom: 5px;
+    }
+
+    input, textarea{
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      padding: 7px;
+      &:focus{
+        outline: 2px solid $colorContrast;
+      }
+      padding: 10px 0 5px 10px;
+    }
+
+    .date{
+      color: white;
+      font-size: 14px;
+    }
+  }
+
+  button{
+    width: 120px;
+    margin-right: 20px;
+    padding: 7px 5px;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #1a1a1a;
+    cursor: pointer;
+    transition: all .3s;
+    &:disabled{
+      background-color: #ccc;
+      color: rgba(0, 0, 0, 0.4);
+      cursor: no-drop;
+    }
+
+    &:hover{
+      background-color: $colorContrast;
+      border-color: $colorContrast;
+      color: #1a1a1a;
+    }
+  }
+
+  button[type="submit"]{
+    background-color: $colorContrast;
+    border: 1px solid $colorContrast;
+    color: #1a1a1a;
+    &:hover{
+      color: white;
+      background-color: #1a1a1a;
+      border-color: #1a1a1a;
+    }
+    &:disabled{
+      background-color: #ccc;
+      color: rgba(0, 0, 0, 0.4);
+      border-color: #ccc;
+      cursor: no-drop;
+    }
+  }
+
+  .btnExcluir{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+    &:hover{
+      opacity: 0.5;
+      background-color: red;
+      border-color: red;
+    }
+  }
+}
+
+.error-form{
+  margin: 7px 0px 0px 0px !important;
+  color: #ff5151;
+}

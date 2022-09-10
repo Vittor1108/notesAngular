@@ -1,1 +1,32 @@
-<p>ler Notas</p>
+<div class="container">
+  <h2>Editar Nota</h2>
+  <form [formGroup]="form" (ngSubmit)="handleSubmit(infoNotes.id)">
+    <div class="container-infos">
+      <label for="nameNote">Nome note:</label>
+      <input type="text" value={{infoNotes.nameTask}} id="nameNote" name="nameNote" formControlName="nameNote"/>
+      <p class="error-form" *ngIf="form.get('nameNote')?.errors?.['required']">
+        Preencha um Nome note
+      </p>
+      <p class="error-form" *ngIf="form.get('nameNote')?.errors?.['minlength']">
+        Digite no mínimo 3 caracteres
+      </p>
+    </div>
+    <div class="container-infos">
+      <label for="descriptionNote">Descrição note:</label>
+      <textarea type="text" value={{infoNotes.descriptionTask}} id="descriptionNote" name="descriptionNote" rows="10" formControlName="descriptionNote"></textarea>
+      <p class="error-form" *ngIf="form.get('descriptionNote')?.errors?.['required']">
+        Preencha uma descrição note
+      </p>
+
+      <p class="error-form" *ngIf="form.get('descriptionNote')?.errors?.['minlength']">
+        Digite no mínimo 5 caracteres
+      </p>
+    </div>
+    <div class="container-infos">
+      <p class="date">Data de criação: {{infoNotes.date}}</p>
+    </div>
+    <button type="button" (click)="closeModal()">Fechar</button>
+    <button class="btnExcluir" type="button" (click)="excludeNote(infoNotes.id)">Excluir</button>
+    <button type="submit"  [disabled]="!form.valid">Editar</button>
+  </form>
+</div>
