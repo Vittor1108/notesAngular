@@ -1,6 +1,6 @@
 # Sejam Bem Vindos ao Projeto Notes -
 
-Este projeto Visa colocar o meu recém adqurido conhecimento de ReactJs em prática. Vale ressaltar que o projeto ainda está em desenvolvimento (:
+Este projeto Visa colocar o meu recém adqurido conhecimento de Angular em prática (:
 
 O projeto visa a criação de um aplicativo para anotações baseado no site - [Evernote](https://evernote.com/intl/pt-br).
 
@@ -23,3 +23,10 @@ Essa é a tela de login, onde o usuário poderá realiazar seu cadastro e logar 
 </p>
 
 Esta é a Home do site, onde o usuário poderá realizar suas anotações, Adicionar Tarefas, Ter acesso a conselhos e Algumas informações sobre a temperatura, horário e data.
+
+## APIS -
+
+Para construir o projeto utilizei as seguintes API -
+1. openWheater
+2. Advice Slip
+3. Firebase
