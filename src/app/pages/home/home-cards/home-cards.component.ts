@@ -12,6 +12,7 @@ import {
 } from '@angular/material/snack-bar';
 import { EmotionalPhraseService } from 'src/app/service/emotionalPharse/emotional-phrase.service';
 import { CreateNewTaskService } from 'src/app/service/createNewTask/create-new-task.service';
+import { WheaterCardService } from 'src/app/service/wheaterCard/wheater-card.service';
 @Component({
   selector: 'app-home-cards',
   templateUrl: './home-cards.component.html',
@@ -21,8 +22,13 @@ export class HomeCardsComponent implements OnInit {
   allNotes: Array<any> = [];
   allTasks: Array<any>  = [];
   phraseEmotional!: string;
+  locationUser!: string;
+  date!:string;
+  day!:string;
   form!: FormGroup;
   email!:string;
+  hours!: string;
+  actualTemp!: number;
   @ViewChild('taskValue') input: any;
 
   constructor(
@@ -31,21 +37,26 @@ export class HomeCardsComponent implements OnInit {
     private snackBar: MatSnackBar,
     private pharseService: EmotionalPhraseService,
     public formBuilder: FormBuilder,
-    private taskService: CreateNewTaskService
+    private taskService: CreateNewTaskService,
+    private weatherService: WheaterCardService
   ) {}
 
   ngOnInit(): void {
     this.getNotes();
     this.getTasks()
+    this.getDateAndDay();
     setInterval(() => {
       this.getPharse();
+      this.getDateAndDay();
     }, 60000);
 
     this.getPharse();
 
     this.form = this.formBuilder.group({
       addTask: ['', [Validators.required]],
-    })
+    });
+
+    this.getLocationUser();
   }
 
   public createNewNotes(): void {
@@ -139,5 +150,67 @@ export class HomeCardsComponent implements OnInit {
     const idToString = `${id}`;
     this.taskService.deleteTask(idToString);
     this.getTasks();
+  }
+
+  private getLocationUser():void {
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((infoLocation)=> {
+        const userInfo = {lat: infoLocation.coords.latitude, lng: infoLocation.coords.longitude};
+        this.weatherService.userLocation(userInfo).then((element) => {
+          element.subscribe((location: any) => {
+            this.locationUser =  location.results[0].formatted_address.split(",")[2];
+            this.getWheater(userInfo);
+          });
+
+        });
+      });
+    }
+  }
+
+  public getDateAndDay():void {
+    const date = new Date();
+    const day = date.getDay();
+    const dayDate = date.getDate() <= 9 ? `0${date.getDate()}` : date.getDate();
+    const month = date.getMonth() + 1 <= 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+    const year = date.getFullYear();
+    this.date = `${dayDate}/${month}/${year}`;
+
+    const hour = date.getHours() > 0 ? date.getHours() : `0${date.getHours()}`;
+    const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
+    this.hours = `${hour}:${minutes}`
+    switch(day){
+      case 0:
+        this.day = 'DOM';
+        break;
+      case 1:
+        this.day = 'SEG';
+        break;
+      case 2:
+        this.day = 'TER';
+        break;
+      case 3:
+        this.day = 'QUA';
+        break;
+      case 4:
+        this.day = 'QUI';
+        break;
+      case 5:
+        this.day = 'SEX';
+        break;
+      case 6:
+        this.day = 'SAB';
+        break;
+      default:
+    }
+  }
+
+  private getWheater(latLng: {lat: number, lng: number}): void{
+    this.weatherService.getWheater(latLng).then((element => {
+      element.subscribe((element:any)=> {
+        this.actualTemp = Math.floor(element.main.temp);
+      });
+    }));
+
+    
   }
 }

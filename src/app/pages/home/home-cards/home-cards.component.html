@@ -17,38 +17,18 @@
     </article>
     <article class="card-top-hours">
       <div class="hours-weather-app">
-        <h3>Taboão da Serra</h3>
-        <p>Seg - 06/08/2022</p>
-        <h2 class="temp">22º</h2>
+        <h3>{{locationUser}}</h3>
+        <p>{{day}} - {{date}}</p>
+        <h2 class="temp">{{actualTemp}}º</h2>
         <div class="weahter-app-cards">
           <div>
-            <span>33º</span>
-            <img
-              src="../../../../assets/img/sunIcon.png"
-              alt="Previsão de Sol"
-            />
-            <span>Ter</span>
-          </div>
-          <div>
-            <span>33º</span>
-            <img
-              src="../../../../assets/img/sunIcon.png"
-              alt="Previsão de Sol"
-            />
-            <span>Ter</span>
-          </div>
-          <div>
-            <span>33º</span>
-            <img
-              src="../../../../assets/img/sunIcon.png"
-              alt="Previsão de Sol"
-            />
-            <span>Ter</span>
+            <img src="../../../../assets/img/sunIcon.png" alt="Sol" *ngIf="actualTemp >= 20">
+            <img src="../../../../assets/img/snow.png" alt="Frio" *ngIf="actualTemp < 20">
           </div>
         </div>
       </div>
       <div class="hours-hours-app">
-        <h2>22:00</h2>
+        <h2>{{hours}}</h2>
       </div>
     </article>
   </section>
@@ -65,7 +45,6 @@
         <button type="submit" [disabled]="!form.valid">Criar Tarefa</button>
       </form>
       <ul *ngIf="allTasks.length > 0">
-        <!-- <p *ngFor="let task of allTasks">{{task.nameTask}}</p> -->
         <li *ngFor="let task of allTasks"> <input type="checkbox" (click)="deleteTask(task.idTask)">{{task.nameTask}}</li>
       </ul>
     </article>

@@ -192,12 +192,14 @@ $secondaryColorsCard: #393e46;
         margin-top: 20px;
 
         > div {
-          background-color: $cardsBackground;
           color: white;
           font-size: 10px;
           border-radius: 30px;
           text-align: center;
-          box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
+          transition: all .5s;
+          &:hover{
+            transform: translateY(-20px) scale(1.1) rotate(360deg);
+          }
           span {
             display: block;
             padding: 5px;
