@@ -1,27 +1,25 @@
-# NotesAngular
+# Sejam Bem Vindos ao Projeto Notes -
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+Este projeto Visa colocar o meu recém adqurido conhecimento de ReactJs em prática. Vale ressaltar que o projeto ainda está em desenvolvimento (:
 
-## Development server
+O projeto visa a criação de um aplicativo para anotações baseado no site - [Evernote](https://evernote.com/intl/pt-br).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas - 
 
-## Code scaffolding
+1. Angular
+2. Material.angular
+4. Firebase;
+## Tela De Login - 
+<p align="center">
+  <img src="src/assets/img/readme/login.png">
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Essa é a tela de login, onde o usuário poderá realiazar seu cadastro e logar com o Google ou Facebook.
 
-## Build
+## Tela Home - 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<p align="center">
+  <img src="src/assets/img/readme/Home.png">
+</p>
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Esta é a Home do site, onde o usuário poderá realizar suas anotações, Adicionar Tarefas, Ter acesso a conselhos e Algumas informações sobre a temperatura, horário e data.
